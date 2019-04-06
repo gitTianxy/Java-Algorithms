@@ -34,6 +34,8 @@ public class BubbleSort {
     
     /**
      * 冒泡排序
+     *
+     * 时间复杂度: O(n+(n-1)+..+1) = O(n(n+1)/2) = O(n^2)
      * 
      * @param sort
      */

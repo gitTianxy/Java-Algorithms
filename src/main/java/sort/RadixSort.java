@@ -19,7 +19,13 @@ package sort;
  * @date 2017年5月7日
  */
 public class RadixSort {
-    
+
+    /**
+     * 时间复杂度: O(k*f(n)), k为位数, f(n)表示每一位的排序复杂度;
+     * 取桶排序或者计数排序, f(n)=O(n), 则复杂度为O(k*n)
+     *
+     * @param array
+     */
     public static void sort(int[] array) {
         // find max
         int max = array[0];

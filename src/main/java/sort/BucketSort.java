@@ -11,6 +11,10 @@ package sort;
  * 另：
  * 本例是每个桶的大小固定为10
  * 如果用递归，则设置每次切分桶的个数固定
+ *
+ * 适用条件:
+ * 1. 排序数目巨大, 每次只能读取部分到内存实现排序
+ * 2. 数列取值分布较均匀
  * 
  * @author XinyuTian
  * @date 2017年5月7日
@@ -18,6 +22,14 @@ package sort;
 public class BucketSort {
     final static int BUCKET_CAPACITY = 10;
 
+    /**
+     * 时间复杂度: O(n+n+m*f(n/m)), m为桶个数,f(n/m)为桶内部排序的时间复杂度;
+     * 因为f(n/m)取值可为 O(n/m), O(n/mlog(n/m)), O((n/m)^2)
+     * 所以桶排序的时间复杂度可为 O(3n), O(2n+nlog(n/m)), O(2n+n^2/m);
+     * 若取m->n, 则上述复杂度一致退化为 O(n), 但同时空间复杂度由O(m*n)增加为O(n^2)
+     *
+     * @param arr
+     */
     public static void sort(int[] arr) {
         int max = arr[0], min = arr[0];
         int arrayLen = arr.length;
