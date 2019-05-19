@@ -20,50 +20,30 @@ public class StateTransTable {
             }
             System.out.print("\n");
         }
-        System.out.println();
         demo.fillValues();
         demo.printResult();
     }
 
     void fillValues() {
-        int s = 0;
-        while (s < size) {
-            int col = s;
-            int row = s;
-
-            int left = 0;
-            int upper = 0;
-            // 横向填充
-            while (col < size) {
-                if (col > 0) {
-                    left = values[row][col - 1];
-                }
-                if (row > 0) {
-                    upper = values[row - 1][col];
-                }
-                values[row][col] = table[row][col] + Math.min(left, upper);
-                System.out.printf("fill (%s,%s). left:%s, upper:%s, sit:%s, result:%s\n", row, col, left, upper,
-                        table[row][col], values[row][col]);
-                col++;
-            }
-            row++;
-            col = s;
-            // 纵向填充
-            left = 0;
-            upper = 0;
-            while (row < size) {
-                if (col > 0) {
-                    left = values[row][col - 1];
-                }
-                if (row > 0) {
-                    upper = values[row - 1][col];
-                }
-                values[row][col] = table[row][col] + Math.min(left, upper);
-                row++;
-            }
-
-            s++;
+        // 填充第一行
+        int sum = 0;
+        for (int col=0; col<size; col++) {
+            sum += table[0][col];
+            values[0][col] = sum;
         }
+        // 填充第一列
+        sum = 0;
+        for (int row=0; row<size; row++) {
+            sum += table[row][0];
+            values[row][0] = sum;
+        }
+        // 填充其余空格
+        for (int row=1; row<size; row++) {
+            for (int col=1; col<size; col++) {
+                values[row][col] = table[row][col] + Math.min(values[row-1][col], values[row][col - 1]);
+            }
+        }
+
     }
 
     void printResult() {
