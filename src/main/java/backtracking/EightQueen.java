@@ -11,13 +11,13 @@ import java.util.List;
  * @Author: kevin
  * @Date: 2019/5/19
  */
-public class EightQueue {
+public class EightQueen {
     final int size = 8;
     int[] board = new int[size];
     List<int[]> results = new ArrayList<>();
 
     public static void main(String[] args) {
-        EightQueue demo = new EightQueue();
+        EightQueen demo = new EightQueen();
         demo.calc8Queen(0);
         demo.printResult();
     }
