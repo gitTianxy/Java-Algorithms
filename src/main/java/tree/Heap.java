@@ -6,28 +6,21 @@ package tree;
  * @Author: kevin
  * @Date: 2019/5/9
  */
-public class Heap<E> {
-    private Node[] nodes;
-    private int size;
+public abstract class Heap<E> {
+    protected Node[] nodes;
+    protected int size;
     /**
      * 指向末尾节点的下一位置
      */
-    private int tailIdx;
-    private final int rootIdx = 1;
+    protected int tailIdx;
+    protected final int rootIdx = 1;
 
     public Heap(int size) {
         this.size = size;
         nodes = new Node[size];
     }
 
-    public static void main(String[] args) {
-        final int limit = (int) Math.pow(2, 6);
-        Heap<Node> heap = new Heap<>(limit);
-        for (int i = 0; i < limit; i++) {
-            heap.insert(new MyNode((int) Math.round(Math.random() * limit), "node_" + i));
-        }
-        heap.prettyPrint2();
-    }
+
 
     public void print() {
         int height = level(tailIdx - 1);
@@ -99,29 +92,28 @@ public class Heap<E> {
             beforeHeight = height;
             idx++;
         }
+        System.out.println();
     }
 
     public void insert(Node node) {
         nodes[tailIdx++] = node;
-        heapify();
+        bottomUpHeapify();
     }
 
-    private void heapify() {
-        if (tailIdx <= rootIdx + 1) {
+    public void dropTop() {
+        if (tailIdx == rootIdx) {
+            nodes[rootIdx] = null;
             return;
         }
-        int sonIdx = tailIdx - 1;
-        int fatherIdx = sonIdx / 2;
-        while (fatherIdx >= rootIdx) {
-            if (nodes[fatherIdx].value() < nodes[sonIdx].value()) {
-                Node tmp = nodes[fatherIdx];
-                nodes[fatherIdx] = nodes[sonIdx];
-                nodes[sonIdx] = tmp;
-            }
-            sonIdx = fatherIdx;
-            fatherIdx = sonIdx / 2;
-        }
+        nodes[rootIdx] = nodes[tailIdx-1];
+        nodes[tailIdx-1] = null;
+        tailIdx--;
+        topDownHeapify();
     }
+
+    abstract protected void bottomUpHeapify();
+
+    abstract protected void topDownHeapify();
 
     /**
      * 第l层的节点, 其下标范围是[2^l-2^(l-1), 2^l-1], 所以:
@@ -181,6 +173,11 @@ public class Heap<E> {
         @Override
         public int value() {
             return value;
+        }
+
+        @Override
+        public String name() {
+            return name;
         }
 
         public String getName() {
