@@ -1,7 +1,7 @@
-package queue;
+package dataStructure.queue;
 
 /**
- * @Description: 链式队列
+ * @Description: TODO: 链式队列
  *
  * @Author: XinyuTian
  * @Date: 2019/5/5

@@ -1,4 +1,4 @@
-package queue;
+package dataStructure.queue;
 
 /**
  * @Description: 循环队列

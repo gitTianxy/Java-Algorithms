@@ -1,11 +1,21 @@
-package dataStructure;
+package dataStructure.queue;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * TODO
+ * Queue:
+ * 1. First In, First Out
+ * 2. add(e),offer(e)
+ * 3. poll(),peek()
+ *
+ *
+ * Implementations:
+ * 1. ArrayQueue
+ * 2. LinkedQueue
+ * 3. CircularQueue
+ *
  * @author XinyuTian
  * @date 2017年5月14日
 **/

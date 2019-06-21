@@ -1,7 +1,6 @@
-package queue;
+package dataStructure.queue;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 顺序队列 (非线程安全)

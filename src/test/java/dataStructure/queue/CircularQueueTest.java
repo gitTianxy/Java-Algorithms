@@ -1,4 +1,4 @@
-package queue;
+package dataStructure.queue;
 
 import java.util.concurrent.TimeUnit;
 

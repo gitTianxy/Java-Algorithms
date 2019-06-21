@@ -1,4 +1,4 @@
-package tree;
+package dataStructure.tree;
 
 /**
  * 二叉搜索树

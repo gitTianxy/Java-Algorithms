@@ -1,21 +1,21 @@
-package tree;
+package dataStructure.tree;
 
 /**
- * @Description: 大顶堆
+ * @Description: 小顶堆
+ *
  * @Author: XinyuTian
  * @Date: 2019/6/4
  */
-public class BigTopHeap<E> extends Heap<E> {
-
-    public BigTopHeap(int size) {
+public class SmallTopHeap<E> extends Heap<E> {
+    public SmallTopHeap(int size) {
         super(size);
     }
 
     public static void main(String[] args) {
         final int limit = (int) Math.pow(2, 4);
-        Heap<Node> heap = new BigTopHeap<>(limit);
+        Heap<Node> heap = new SmallTopHeap<>(limit);
         for (int i = 0; i < limit; i++) {
-            heap.insert(new MyNode((int) Math.round(Math.random() * limit), "node_" + i));
+            heap.insert(new MyNode((int) Math.round(Math.random() * limit), "n_" + i));
         }
         heap.prettyPrint2();
         heap.dropTop();
@@ -25,13 +25,13 @@ public class BigTopHeap<E> extends Heap<E> {
 
     @Override
     protected void bottomUpHeapify() {
-        if (tailIdx <= rootIdx + 1) {
+        if (tailIdx <= rootIdx) {
             return;
         }
         int sonIdx = tailIdx - 1;
         int fatherIdx = sonIdx / 2;
         while (fatherIdx >= rootIdx) {
-            if (nodes[fatherIdx].value() < nodes[sonIdx].value()) {
+            if (nodes[fatherIdx].value() > nodes[sonIdx].value()) {
                 Node tmp = nodes[fatherIdx];
                 nodes[fatherIdx] = nodes[sonIdx];
                 nodes[sonIdx] = tmp;
@@ -39,7 +39,6 @@ public class BigTopHeap<E> extends Heap<E> {
             sonIdx = fatherIdx;
             fatherIdx = sonIdx / 2;
         }
-
     }
 
     @Override
@@ -52,19 +51,18 @@ public class BigTopHeap<E> extends Heap<E> {
                 break;
             }
             // find max-son
-            int maxSon = leftSonIdx;
-            if (rightSonIdx < tailIdx && nodes[rightSonIdx].value() > nodes[leftSonIdx].value()) {
-                maxSon = rightSonIdx;
+            int minSon = leftSonIdx;
+            if (rightSonIdx < tailIdx && nodes[rightSonIdx].value() < nodes[leftSonIdx].value()) {
+                minSon = rightSonIdx;
             }
-            if (nodes[curr].value() >= nodes[maxSon].value()) {
+            if (nodes[curr].value() <= nodes[minSon].value()) {
                 break;
             }
             // swap
             Node tmp = nodes[curr];
-            nodes[curr] = nodes[maxSon];
-            nodes[maxSon] = tmp;
-            curr = maxSon;
+            nodes[curr] = nodes[minSon];
+            nodes[minSon] = tmp;
+            curr = minSon;
         }
-
     }
 }
