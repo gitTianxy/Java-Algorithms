@@ -14,12 +14,43 @@ public class MergeSort {
      * 
      * @param array
      */
-    public static void sort(int[] array) {
-        int[] tempArray = new int[array.length];
+    public static void mergeSort(int[] array) {
+//        int[] tempArray = new int[array.length];
 //        recursiveMerge(array, tempArray, 0, array.length - 1);
-        iterativeMerge(array);
+//        iterativeMerge(array);
+        sort(array, 0, array.length - 1);
     }
-    
+
+    /**
+     * RECOMMENDED: local, stable
+     *
+     * @param nums
+     * @param start
+     * @param end
+     */
+    public static void sort(int[] nums, int start, int end) {
+        if (start == end) {
+            return;
+        }
+        int median = start + (end - start) / 2;
+        sort(nums, start, median);
+        sort(nums, median + 1, end);
+        int c1 = start;
+        int c2 = median + 1;
+        int tmp;
+        while (c1<c2 && c2 <= end) {
+            if (nums[c1] <= nums[c2]) {
+                c1++;
+            } else {
+                tmp = nums[c2];
+                System.arraycopy(nums, c1, nums, c1 + 1, c2 - c1);
+                nums[c1] = tmp;
+                c2++;
+                c1++;
+            }
+        }
+    }
+
     /**
      * 迭代算法
      * 归并过程
