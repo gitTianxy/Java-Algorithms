@@ -23,96 +23,96 @@ public class Test {
             array[i] = ran.nextInt(500);
             System.out.print(array[i] + " ");
         }
-        int[] sort = new int[array.length];
+        int[] copy = new int[array.length];
         System.out.println();
         System.out.println("----------------------------");
         // 交换排序_冒泡排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        BubbleSort.bubbleSort(sort);
+        BubbleSort.bubbleSort(copy);
         System.out.print("冒泡排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 交换排序_快速排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        QuickSort.quicksort(sort, 0, sort.length - 1);
+        QuickSort.quicksort(copy, 0, copy.length - 1);
         System.out.println();
         System.out.print("快速排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 选择排序_直接选择排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        SelectSort.ascendSort(sort);
+        SelectSort.ascendSort(copy);
         System.out.println();
         System.out.print("选择排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 选择排序_堆排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        HeapSort.sort(sort);
+        HeapSort.sort(copy);
         System.out.println();
         System.out.print("堆排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 插入排序_直接插入排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        InsertionSort.sort(sort);
+        InsertionSort.sort(copy);
         System.out.println();
         System.out.print("插入排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 插入排序_希尔排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        ShellSort.sort(sort);
+        ShellSort.sort(copy);
         System.out.println();
         System.out.print("希尔排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 归并排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        MergeSort.sort(sort);
+        MergeSort.mergeSort(copy);
         System.out.println();
         System.out.print("归并排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 基数排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        RadixSort.sort(sort);
+        RadixSort.sort(copy);
         System.out.println();
         System.out.print("基数排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         // 桶排序
-        for (int i = 0; i < sort.length; i++) {
-            sort[i] = array[i];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = array[i];
         }
-        BucketSort.sort(sort);
+        BucketSort.sort(copy);
         System.out.println();
         System.out.print("桶排序后的数组为：");
-        for (int i : sort) {
+        for (int i : copy) {
             System.out.print(i + " ");
         }
         
