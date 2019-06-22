@@ -15,6 +15,39 @@ package sort;
  * @date 2017年5月6日
 **/
 public class SelectSort {
+
+    /**
+     * RECOMMENDED!
+     *
+     * @param items
+     */
+    public void sort(Items.Item[] items) {
+        int left = 0;
+        while (left < items.length - 1) {
+            // 遇到连续相同元素
+            while (left > 0 && items[left].value == items[left - 1].value) {
+                left++;
+                continue;
+            }
+            int minPos = findMin(items, left);
+            if (minPos > left) {
+                Items.Item min = items[minPos];
+                items[minPos] = items[left];
+                items[left] = min;
+            }
+            left++;
+        }
+    }
+
+    public int findMin(Items.Item[] items, int start) {
+        int minPos = start;
+        for (int i=start+1; i<items.length; i++) {
+            if (items[minPos].value > items[i].value) {
+                minPos = i;
+            }
+        }
+        return minPos;
+    }
     
     /**
      * 数组的左半部分是有序区, 右半部分是无序区

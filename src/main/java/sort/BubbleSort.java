@@ -6,8 +6,8 @@ package sort;
  * 依次比较相邻的两个数，将小数放在前面，大数放在后面
  * 则每一轮过后右边的数为最大数
  * 冒泡排序，具有稳定性  
- * 时间复杂度为O（n^2）  
- * 不及堆排序，快速排序O（nlogn，底数为2
+ * 时间复杂度为O(n^2）
+ * 不及堆排序，快速排序 O(nlogn，底数为2)
  * 
  * @author XinyuTian
  * @date 2017年5月6日
@@ -29,6 +29,25 @@ public class BubbleSort {
                 i++;
             }
             j++;
+        }
+    }
+
+    /**
+     * RECOMMENDED edition
+     *
+     * @param items
+     */
+    public void sort(Items.Item[] items) {
+        int right = items.length - 1;
+        while (right > 0) {
+            for (int i=0; i<right; i++) {
+                if (items[i].value > items[i+1].value) {
+                    Items.Item tmp = items[i];
+                    items[i] = items[i + 1];
+                    items[i+1]=tmp;
+                }
+            }
+            right--;
         }
     }
     
